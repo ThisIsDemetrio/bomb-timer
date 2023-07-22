@@ -1,0 +1,195 @@
+// TODO: Refactor, use constants mixins and extends
+
+:host {
+  font-family: "TickingTimebombItalic", sans-serif;
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 1rem 2rem;
+
+  font-size: 1.5rem;
+  color: yellow;
+
+  .title {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+  }
+
+  .description {
+    font-size: 2rem;
+  }
+
+  .timer-options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .timer-options {
+      align-items: center;
+      justify-content: left;
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+
+      .countdown-time {
+        padding: 0.5rem;
+        border: 1.5px solid yellow;
+        border-radius: 10px;
+
+        input[type="text"] {
+          color: yellow;
+          font-family: "TickingTimebombItalic", sans-serif;
+          font-size: 2rem;
+
+          background-color: black;
+          border: 0;
+
+          width: 48px;
+        }
+      }
+      .show-milliseconds-options {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        border: 1.5px solid yellow;
+        border-radius: 10px;
+        padding: 0.5rem;
+
+        position: relative;
+        height: 36px;
+        width: 280px;
+
+        // Original checkbox button is hidden
+        input[type="checkbox"] {
+          display: none;
+        }
+
+        // Checkbox btn container
+        input[type="checkbox"] + label {
+          display: flex;
+          width: 1rem;
+          height: 1rem;
+          border: 1px solid yellow;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+
+        // Checkbox btn content when checked
+        input[type="checkbox"]:checked + label::before {
+          content: "";
+          position: absolute;
+          width: 0.75rem;
+          height: 0.75rem;
+          background-color: yellow;
+          margin: 2px;
+        }
+
+        .show-milliseconds-label {
+          margin-left: 24px;
+          min-width: 280px;
+        }
+      }
+    }
+  }
+
+  .additional-options {
+    align-items: left;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .additional-options-inline {
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem;
+
+      .color-option {
+        display: flex;
+        position: relative;
+        width: 120px;
+
+        // Original radio button is hidden
+        input[type="radio"] {
+          display: none;
+        }
+
+        // Radio btn container
+        input[type="radio"] + label {
+          display: flex;
+          width: 1rem;
+          height: 1rem;
+          border: 1px solid yellow;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+
+        // Radio btn content when selected
+        input[type="radio"]:checked + label::before {
+          content: "";
+          position: absolute;
+          width: 0.75rem;
+          height: 0.75rem;
+          background-color: yellow;
+          margin: 2px;
+        }
+
+        .label {
+          margin-left: 24px;
+
+          &.red {
+            color: #ff0000;
+          }
+
+          &.green {
+            color: #03ac13;
+          }
+
+          &.blu {
+            color: #0d52bd;
+          }
+        }
+      }
+    }
+  }
+
+  .submit-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+
+    .submit-btn {
+      background-color: yellow;
+      color: black;
+      font-family: "TickingTimebombItalic", sans-serif;
+      font-size: 2rem;
+      padding: 1rem;
+      border: 1px darken(yellow, 10%) solid;
+      border-radius: 10px;
+
+      &:hover {
+        background-color: darken(yellow, 20%);
+        color: white;
+        cursor: pointer;
+      }
+
+      &:disabled {
+        background-color: grey;
+        color: white;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .credits {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    font-size: 1rem;
+  }
+}

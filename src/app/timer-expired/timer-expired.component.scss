@@ -1,0 +1,20 @@
+:host {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  position: relative;
+  width: 100%;
+
+  .timer {
+    display: flex;
+    font-size: 20vw;
+  }
+
+  .text {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 5rem;
+    font-size: 2vw;
+  }
+}

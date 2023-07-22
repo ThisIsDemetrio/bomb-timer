@@ -1,0 +1,19 @@
+:host {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  position: relative;
+  width: 100%;
+
+  .bomb-timer {
+    font-size: 20vw;
+  }
+
+  .cancel-warning {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 5rem;
+    font-size: 2vw;
+  }
+}
