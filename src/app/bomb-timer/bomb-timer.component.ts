@@ -16,8 +16,8 @@ import {
 import { BehaviorSubject, Subscription, interval } from 'rxjs';
 import { takeWhile } from 'rxjs/operators';
 
-import { BombTimerOptions, Color } from '../types';
-import { MILLISECONDS_IN_SECOND, getDefaultOptions, getFormattedTimeLeft } from '../utils';
+import { BLACK, BombTimerOptions, Color } from '../types';
+import { MILLISECONDS_IN_SECOND, getFormattedTimeLeft } from '../utils';
 
 @Component({
   selector: 'bomb-timer',
@@ -28,7 +28,7 @@ import { MILLISECONDS_IN_SECOND, getDefaultOptions, getFormattedTimeLeft } from 
 })
 export class BombTimerComponent implements OnDestroy, OnInit, AfterViewInit {
   @Input() bombTimerOptions: BombTimerOptions | undefined;
-  @HostBinding('style.color') color: Color = '#000000';
+  @HostBinding('style.color') color: Color = BLACK;
   @Output() countdownCanceled = new EventEmitter<void>();
   @Output() countdownCompleted = new EventEmitter<void>();
   @ViewChild('audioPlayer') audioPlayerRef!: ElementRef<HTMLAudioElement>;
