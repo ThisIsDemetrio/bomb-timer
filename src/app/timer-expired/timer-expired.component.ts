@@ -8,13 +8,12 @@ import {
   HostListener,
   Input,
   OnDestroy,
-  OnInit,
   Output,
   ViewChild,
 } from '@angular/core';
 
-import { BombTimerOptions, Color } from '../types';
-import { MILLISECONDS_IN_SECOND, getDefaultOptions } from '../utils';
+import { BLACK, BombTimerOptions, Color } from '../types';
+import { MILLISECONDS_IN_SECOND } from '../utils';
 import { Subscription, interval } from 'rxjs';
 
 @Component({
@@ -26,8 +25,8 @@ import { Subscription, interval } from 'rxjs';
 })
 export class TimerExpiredComponent implements OnDestroy, OnDestroy, AfterViewInit {
   @Input() bombTimerOptions: BombTimerOptions | undefined;
-  @HostBinding('style.background-color') backgroundColor: Color = '#000000';
-  @HostBinding('style.color') color: Color = '#000000';
+  @HostBinding('style.background-color') backgroundColor: Color = BLACK;
+  @HostBinding('style.color') color: Color = BLACK;
   @Output() onStartNewTimer = new EventEmitter<void>();
   @ViewChild('audioPlayer') audioPlayerRef!: ElementRef<HTMLAudioElement>;
 
@@ -48,11 +47,12 @@ export class TimerExpiredComponent implements OnDestroy, OnDestroy, AfterViewIni
     this.intervalSubscription = interval(MILLISECONDS_IN_SECOND).subscribe(() => {
       if (!this.bombTimerOptions) return;
 
+      // Switch colors
       this.color = this.backgroundColor;
-      this.backgroundColor = this.color === '#000000' ? this.bombTimerOptions.color : '#000000';
+      this.backgroundColor = this.color === BLACK ? this.bombTimerOptions.color : BLACK;
     });
 
-    this.showRestartTextTimeout = setTimeout(() => (this.showRestartText = false), MILLISECONDS_IN_SECOND * 3);
+    this.showRestartTextTimeout = setTimeout(() => (this.showRestartText = true), MILLISECONDS_IN_SECOND * 3);
   }
 
   ngAfterViewInit(): void {
