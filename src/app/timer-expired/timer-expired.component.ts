@@ -52,7 +52,7 @@ export class TimerExpiredComponent implements OnDestroy, OnDestroy, AfterViewIni
       this.backgroundColor = this.color === '#000000' ? this.bombTimerOptions.color : '#000000';
     });
 
-    this.showRestartTextTimeout = setTimeout(() => (this.showRestartText = false), MILLISECONDS_IN_SECOND * 3);
+    this.showRestartTextTimeout = setTimeout(() => (this.showRestartText = true), MILLISECONDS_IN_SECOND * 3);
   }
 
   ngAfterViewInit(): void {
