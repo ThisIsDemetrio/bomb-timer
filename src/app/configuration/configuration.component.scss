@@ -1,7 +1,8 @@
 // TODO: Refactor, use constants mixins and extends
+$color: #ffbf00;
 
 :host {
-  font-family: "TickingTimebombItalic", sans-serif;
+  font-family: "TickingTimebomb", sans-serif;
   height: 100%;
   width: 100%;
 
@@ -11,7 +12,7 @@
   gap: 1rem 2rem;
 
   font-size: 1.5rem;
-  color: yellow;
+  color: $color;
 
   .title {
     font-size: 5rem;
@@ -36,12 +37,12 @@
 
       .countdown-time {
         padding: 0.5rem;
-        border: 1.5px solid yellow;
+        border: 1.5px solid $color;
         border-radius: 10px;
 
         input[type="text"] {
-          color: yellow;
-          font-family: "TickingTimebombItalic", sans-serif;
+          color: $color;
+          font-family: "TickingTimebomb", sans-serif;
           font-size: 2rem;
 
           background-color: black;
@@ -55,7 +56,7 @@
         align-items: center;
         gap: 0.5rem;
 
-        border: 1.5px solid yellow;
+        border: 1.5px solid $color;
         border-radius: 10px;
         padding: 0.5rem;
 
@@ -73,7 +74,7 @@
           display: flex;
           width: 1rem;
           height: 1rem;
-          border: 1px solid yellow;
+          border: 1px solid $color;
           border-radius: 4px;
           cursor: pointer;
         }
@@ -84,7 +85,7 @@
           position: absolute;
           width: 0.75rem;
           height: 0.75rem;
-          background-color: yellow;
+          background-color: $color;
           margin: 2px;
         }
 
@@ -123,7 +124,7 @@
           display: flex;
           width: 1rem;
           height: 1rem;
-          border: 1px solid yellow;
+          border: 1px solid $color;
           border-radius: 4px;
           cursor: pointer;
         }
@@ -134,24 +135,12 @@
           position: absolute;
           width: 0.75rem;
           height: 0.75rem;
-          background-color: yellow;
+          background-color: $color;
           margin: 2px;
         }
 
         .label {
           margin-left: 24px;
-
-          &.red {
-            color: #ff0000;
-          }
-
-          &.green {
-            color: #03ac13;
-          }
-
-          &.blu {
-            color: #0d52bd;
-          }
         }
       }
     }
@@ -164,16 +153,16 @@
     padding: 1rem;
 
     .submit-btn {
-      background-color: yellow;
+      background-color: $color;
       color: black;
-      font-family: "TickingTimebombItalic", sans-serif;
+      font-family: "TickingTimebomb", sans-serif;
       font-size: 2rem;
       padding: 1rem;
-      border: 1px darken(yellow, 10%) solid;
+      border: 1px darken($color, 10%) solid;
       border-radius: 10px;
 
       &:hover {
-        background-color: darken(yellow, 20%);
+        background-color: darken($color, 20%);
         color: white;
         cursor: pointer;
       }
