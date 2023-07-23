@@ -47,22 +47,10 @@
 <div class="additional-options">
   <label>Color:</label>
   <div class="additional-options-inline">
-    <div class="color-option">
-      <input type="radio" id="red" name="color" value="#FF0000" [(ngModel)]="selectedColor" checked />
-      <label for="red">
-        <span class="label red">Red</span>
-      </label>
-    </div>
-    <div class="color-option">
-      <input type="radio" id="green" name="color" value="#03AC13" [(ngModel)]="selectedColor" />
-      <label for="green">
-        <span class="label green">Green</span>
-      </label>
-    </div>
-    <div class="color-option">
-      <input type="radio" id="blue" name="color" value="#0D52BD" [(ngModel)]="selectedColor" />
-      <label for="blue">
-        <span class="label blu">Blue</span>
+    <div class="color-option" *ngFor="let color of availableColors">
+      <input type="radio" [id]="color.name" name="color" [value]="color.value" [(ngModel)]="selectedColor" checked />
+      <label [for]="color.name">
+        <span class="label" [style.color]="color.value">{{ color.name }}</span>
       </label>
     </div>
   </div>
