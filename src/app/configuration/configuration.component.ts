@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { BombTimerOptions, Color } from '../types';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { BLUE, BombTimerOptions, Color, GREEN, RED } from '../types';
 import { FormsModule } from '@angular/forms';
 import { MILLISECONDS_IN_HOUR, MILLISECONDS_IN_MINUTE } from '../utils';
 
@@ -9,7 +10,7 @@ const MAX_MINUTES_ALLOWED = 59;
 @Component({
   selector: 'configuration',
   standalone: true,
-  imports: [FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './configuration.component.html',
   styleUrls: ['./configuration.component.scss'],
 })
@@ -19,7 +20,13 @@ export class ConfigurationComponent {
   selectedHours: string = '00';
   selectedMinutes: string = '01';
   showMilliseconds: boolean = false;
-  selectedColor: Color = '#FF0000';
+  selectedColor: Color = RED;
+
+  availableColors = [
+    { name: 'RED', value: RED },
+    { name: 'GREEN', value: GREEN },
+    { name: 'BLUE', value: BLUE },
+  ];
 
   private safeParseToInt(value: string): number {
     value = value.replace(/[^0-9]/g, '');
