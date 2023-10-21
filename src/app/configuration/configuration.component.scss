@@ -51,6 +51,7 @@ $color: #ffbf00;
           width: 48px;
         }
       }
+
       .show-milliseconds-options {
         display: flex;
         align-items: center;
@@ -70,7 +71,7 @@ $color: #ffbf00;
         }
 
         // Checkbox btn container
-        input[type="checkbox"] + label {
+        input[type="checkbox"]+label {
           display: flex;
           width: 1rem;
           height: 1rem;
@@ -80,7 +81,7 @@ $color: #ffbf00;
         }
 
         // Checkbox btn content when checked
-        input[type="checkbox"]:checked + label::before {
+        input[type="checkbox"]:checked+label::before {
           content: "";
           position: absolute;
           width: 0.75rem;
@@ -120,7 +121,7 @@ $color: #ffbf00;
         }
 
         // Radio btn container
-        input[type="radio"] + label {
+        input[type="radio"]+label {
           display: flex;
           width: 1rem;
           height: 1rem;
@@ -130,7 +131,7 @@ $color: #ffbf00;
         }
 
         // Radio btn content when selected
-        input[type="radio"]:checked + label::before {
+        input[type="radio"]:checked+label::before {
           content: "";
           position: absolute;
           width: 0.75rem;
@@ -180,5 +181,19 @@ $color: #ffbf00;
     bottom: 0.5rem;
     right: 0.5rem;
     font-size: 1rem;
+
+    a {
+      &:link {
+        color: lightseagreen
+      }
+
+      &:visited {
+        color: pink
+      }
+
+      &:hover {
+        color: greenyellow
+      }
+    }
   }
 }
