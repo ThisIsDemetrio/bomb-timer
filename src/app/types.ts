@@ -12,7 +12,8 @@ export const BLACK = '#000000';
 export type Color = typeof BLUE | typeof GREEN | typeof RED | typeof BLACK;
 
 export type BombTimerOptions = {
-  endTime: Date;
+  hours: string;
+  minutes: string;
   showMilliseconds: boolean;
   color: Color;
 };

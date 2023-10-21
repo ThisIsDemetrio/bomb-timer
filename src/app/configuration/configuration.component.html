@@ -9,33 +9,18 @@
     <label for="countdown">Countdown lasts:</label>
     <div class="timer-options">
       <div class="countdown-time">
-        <input
-          type="text"
-          id="hours"
-          name="hours"
-          pattern="^([0-9]|[1-9][0-9]|99)$"
-          placeholder="00"
-          [ngModel]="selectedHours"
-          (ngModelChange)="onSelectedHoursChange($event)"
-          (focusout)="onSelectedHoursFocusOut()"
-          required
-        />
+        <input type="text" id="hours" name="hours" pattern="^([0-9]|[1-9][0-9]|99)$" placeholder="00"
+          [ngModel]="configuration.hours" (ngModelChange)="onSelectedHoursChange($event)"
+          (focusout)="onSelectedHoursFocusOut()" required />
         <span>h :</span>
-        <input
-          type="text"
-          id="minutes"
-          name="minutes"
-          pattern="^([1-5][0-9])$"
-          placeholder="00"
-          [ngModel]="selectedMinutes"
-          (ngModelChange)="onSelectedMinutesChange($event)"
-          (focusout)="onSelectedMinutesFocusOut()"
-          required
-        />
+        <input type="text" id="minutes" name="minutes" pattern="^([1-5][0-9])$" placeholder="00"
+          [ngModel]="configuration.minutes" (ngModelChange)="onSelectedMinutesChange($event)"
+          (focusout)="onSelectedMinutesFocusOut()" required />
         <span>m</span>
       </div>
       <div class="show-milliseconds-options">
-        <input type="checkbox" id="showMilliseconds" name="showMilliseconds" [(ngModel)]="showMilliseconds" />
+        <input type="checkbox" id="showMilliseconds" name="showMilliseconds"
+          [(ngModel)]="configuration.showMilliseconds" />
         <label for="showMilliseconds">
           <span class="show-milliseconds-label">Show also milliseconds</span>
         </label>
@@ -48,7 +33,8 @@
   <label>Color:</label>
   <div class="additional-options-inline">
     <div class="color-option" *ngFor="let color of availableColors">
-      <input type="radio" [id]="color.name" name="color" [value]="color.value" [(ngModel)]="selectedColor" checked />
+      <input type="radio" [id]="color.name" name="color" [value]="color.value" [(ngModel)]="configuration.color"
+        checked />
       <label [for]="color.name">
         <span class="label" [style.color]="color.value">{{ color.name }}</span>
       </label>
