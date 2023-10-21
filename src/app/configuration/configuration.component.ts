@@ -18,7 +18,7 @@ export class ConfigurationComponent {
   @Output() onConfigurationSend = new EventEmitter<BombTimerOptions>();
 
   selectedHours: string = '00';
-  selectedMinutes: string = '01';
+  selectedMinutes: string = '30';
   showMilliseconds: boolean = false;
   selectedColor: Color = RED;
 
