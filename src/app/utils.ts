@@ -1,13 +1,14 @@
-import { BLACK, BombTimerOptions } from './types';
+import { BLACK, BombTimerOptions, RED } from './types';
 
 export const MILLISECONDS_IN_HOUR = 3600000;
 export const MILLISECONDS_IN_MINUTE = 60000;
 export const MILLISECONDS_IN_SECOND = 1000;
 
 export const getDefaultOptions = (): BombTimerOptions => ({
-  endTime: new Date(new Date().getTime() + 3600000),
-  showMilliseconds: true,
-  color: BLACK,
+  hours: '00',
+  minutes: '30',
+  showMilliseconds: false,
+  color: RED,
 });
 
 const addLeadingZeros = (number: number, digits: number = 2): string => {

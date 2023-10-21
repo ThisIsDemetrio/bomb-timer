@@ -24,7 +24,7 @@ import { Subscription, interval } from 'rxjs';
   imports: [CommonModule],
 })
 export class TimerExpiredComponent implements OnDestroy, OnDestroy, AfterViewInit {
-  @Input() bombTimerOptions: BombTimerOptions | undefined;
+  @Input() bombTimerConfiguration: BombTimerOptions | undefined;
   @HostBinding('style.background-color') backgroundColor: Color = BLACK;
   @HostBinding('style.color') color: Color = BLACK;
   @Output() onStartNewTimer = new EventEmitter<void>();
@@ -45,11 +45,11 @@ export class TimerExpiredComponent implements OnDestroy, OnDestroy, AfterViewIni
 
   constructor() {
     this.intervalSubscription = interval(MILLISECONDS_IN_SECOND).subscribe(() => {
-      if (!this.bombTimerOptions) return;
+      if (!this.bombTimerConfiguration) return;
 
       // Switch colors
       this.color = this.backgroundColor;
-      this.backgroundColor = this.color === BLACK ? this.bombTimerOptions.color : BLACK;
+      this.backgroundColor = this.color === BLACK ? this.bombTimerConfiguration.color : BLACK;
     });
 
     this.showRestartTextTimeout = setTimeout(() => (this.showRestartText = true), MILLISECONDS_IN_SECOND * 3);

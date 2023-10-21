@@ -27,7 +27,8 @@ import { MILLISECONDS_IN_SECOND, getFormattedTimeLeft } from '../utils';
   imports: [CommonModule],
 })
 export class BombTimerComponent implements OnDestroy, OnInit, AfterViewInit {
-  @Input() bombTimerOptions: BombTimerOptions | undefined;
+  @Input() endDate: Date = new Date()
+  @Input() bombTimerConfiguration: BombTimerOptions | undefined;
   @HostBinding('style.color') color: Color = BLACK;
   @Output() countdownCanceled = new EventEmitter<void>();
   @Output() countdownCompleted = new EventEmitter<void>();
@@ -53,15 +54,15 @@ export class BombTimerComponent implements OnDestroy, OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    if (!this.bombTimerOptions) throw new Error('BombTimerOptions not passed correctly');
+    if (!this.bombTimerConfiguration) throw new Error('BombTimerOptions not passed correctly');
 
-    const { endTime, showMilliseconds } = this.bombTimerOptions;
+    const { showMilliseconds } = this.bombTimerConfiguration;
 
     this.countdownInterval$ = interval(61)
-      .pipe(takeWhile(() => endTime.getTime() > new Date().getTime()))
+      .pipe(takeWhile(() => this.endDate.getTime() > new Date().getTime()))
       .subscribe({
         next: () => {
-          const timeLeft = endTime.getTime() - new Date().getTime();
+          const timeLeft = this.endDate.getTime() - new Date().getTime();
           this.timeLeftInMs$.next(getFormattedTimeLeft(timeLeft, { showMilliseconds }));
         },
         error: () => {},
@@ -73,9 +74,9 @@ export class BombTimerComponent implements OnDestroy, OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    if (!this.bombTimerOptions) throw new Error('BombTimerOptions not passed correctly');
+    if (!this.bombTimerConfiguration) throw new Error('BombTimerOptions not passed correctly');
 
-    this.color = this.bombTimerOptions.color;
+    this.color = this.bombTimerConfiguration.color;
 
     this.audioPlayerRef.nativeElement.play();
   }
