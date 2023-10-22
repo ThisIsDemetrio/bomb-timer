@@ -4,7 +4,7 @@ export enum BombTimerState {
   TIMER_EXPIRED = 'TIMER_EXPIRED',
 }
 
-export const BLUE = '#0D52BD';
+export const BLUE = '#1f76ff';
 export const GREEN = '#03AC13';
 export const RED = '#FF0000';
 export const BLACK = '#000000';
