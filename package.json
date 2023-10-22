@@ -14,7 +14,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "prettier": "npx prettier --write"
+    "prettier": "npx prettier --write ."
   },
   "private": true,
   "dependencies": {

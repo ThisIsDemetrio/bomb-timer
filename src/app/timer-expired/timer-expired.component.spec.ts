@@ -8,7 +8,7 @@ describe('TimerExpiredComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TimerExpiredComponent]
+      declarations: [TimerExpiredComponent],
     });
     fixture = TestBed.createComponent(TimerExpiredComponent);
     component = fixture.componentInstance;

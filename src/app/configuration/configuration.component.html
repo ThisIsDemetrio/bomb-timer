@@ -1,7 +1,12 @@
 <h1 class="title">Bomb Timer</h1>
 <div class="description">
-  <p>Set up the time, add some additional options and let the countdown start.</p>
-  <p>Whenever you need to restart the countdown, press ESC to return to this page.</p>
+  <p>
+    Set up the time, add some additional options and let the countdown start.
+  </p>
+  <p>
+    Whenever you need to restart the countdown, press ESC to return to this
+    page.
+  </p>
 </div>
 
 <form #countdownForm="ngForm">
@@ -9,17 +14,34 @@
     <label for="countdown">Countdown lasts:</label>
     <div class="timer-options">
       <div class="countdown-time">
-        <input type="text" id="hours" name="hours" pattern="^([0-9]|[1-9][0-9]|99)$" placeholder="00"
-          [ngModel]="configuration.hours" (ngModelChange)="onSelectedHoursChange($event)"
-          (focusout)="onSelectedHoursFocusOut()" required />
+        <input
+          type="text"
+          id="hours"
+          name="hours"
+          pattern="^([0-9]|[1-9][0-9]|99)$"
+          placeholder="00"
+          [ngModel]="configuration.hours"
+          (ngModelChange)="onSelectedHoursChange($event)"
+          (focusout)="onSelectedHoursFocusOut()"
+          required />
         <span>h :</span>
-        <input type="text" id="minutes" name="minutes" pattern="^([1-5][0-9])$" placeholder="00"
-          [ngModel]="configuration.minutes" (ngModelChange)="onSelectedMinutesChange($event)"
-          (focusout)="onSelectedMinutesFocusOut()" required />
+        <input
+          type="text"
+          id="minutes"
+          name="minutes"
+          pattern="^([1-5][0-9])$"
+          placeholder="00"
+          [ngModel]="configuration.minutes"
+          (ngModelChange)="onSelectedMinutesChange($event)"
+          (focusout)="onSelectedMinutesFocusOut()"
+          required />
         <span>m</span>
       </div>
       <div class="show-milliseconds-options">
-        <input type="checkbox" id="showMilliseconds" name="showMilliseconds"
+        <input
+          type="checkbox"
+          id="showMilliseconds"
+          name="showMilliseconds"
           [(ngModel)]="configuration.showMilliseconds" />
         <label for="showMilliseconds">
           <span class="show-milliseconds-label">Show also milliseconds</span>
@@ -33,7 +55,12 @@
   <label>Color:</label>
   <div class="additional-options-inline">
     <div class="color-option" *ngFor="let color of availableColors">
-      <input type="radio" [id]="color.name" name="color" [value]="color.value" [(ngModel)]="configuration.color"
+      <input
+        type="radio"
+        [id]="color.name"
+        name="color"
+        [value]="color.value"
+        [(ngModel)]="configuration.color"
         checked />
       <label [for]="color.name">
         <span class="label" [style.color]="color.value">{{ color.name }}</span>
@@ -41,7 +68,10 @@
     </div>
   </div>
   <div class="submit-area">
-    <button class="submit-btn" [disabled]="!isConfigurationValid()" (click)="submitConfiguration()">
+    <button
+      class="submit-btn"
+      [disabled]="!isConfigurationValid()"
+      (click)="submitConfiguration()">
       Start countdown
     </button>
   </div>
@@ -54,5 +84,7 @@
     - "Studio Kolomna" for the clock ticking music<br />
     - "Pixabay" for the bomb explosion music
   </p>
-  <p>Provided by <a href="https://github.com/ThisIsDemetrio">Demetrio Marino</a></p>
+  <p>
+    Provided by <a href="https://github.com/ThisIsDemetrio">Demetrio Marino</a>
+  </p>
 </div>

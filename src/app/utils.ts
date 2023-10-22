@@ -11,15 +11,19 @@ export const getDefaultOptions = (): BombTimerOptions => ({
   color: RED,
 });
 
-const addLeadingZeros = (number: number, digits: number = 2): string => {
+const addLeadingZeros = (number: number, digits = 2): string => {
   const stringifiedNumber = String(number);
   const zerosToAdd = Math.max(digits - stringifiedNumber.length, 0);
   return '0'.repeat(zerosToAdd) + stringifiedNumber;
 };
 
-export const getFormattedTimeLeft = (millisecondsLeft: number, options: { showMilliseconds?: boolean }): string => {
+export const getFormattedTimeLeft = (
+  millisecondsLeft: number,
+  options: { showMilliseconds?: boolean }
+): string => {
   const { showMilliseconds } = options;
-  if (millisecondsLeft < 0) return '00:00:00' + (showMilliseconds ? '.000' : '');
+  if (millisecondsLeft < 0)
+    return '00:00:00' + (showMilliseconds ? '.000' : '');
 
   const hours = Math.floor(millisecondsLeft / MILLISECONDS_IN_HOUR);
   const hoursStr = addLeadingZeros(hours);

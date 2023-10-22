@@ -3,7 +3,11 @@ import { Component } from '@angular/core';
 import { BombTimerOptions, BombTimerState } from './types';
 import { BombTimerComponent } from './bomb-timer/bomb-timer.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
-import { MILLISECONDS_IN_HOUR, MILLISECONDS_IN_MINUTE, getDefaultOptions } from './utils';
+import {
+  MILLISECONDS_IN_HOUR,
+  MILLISECONDS_IN_MINUTE,
+  getDefaultOptions,
+} from './utils';
 import { TimerExpiredComponent } from './timer-expired/timer-expired.component';
 
 @Component({
@@ -11,14 +15,21 @@ import { TimerExpiredComponent } from './timer-expired/timer-expired.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   standalone: true,
-  imports: [NgSwitch, NgSwitchCase, NgSwitchDefault, BombTimerComponent, ConfigurationComponent, TimerExpiredComponent],
+  imports: [
+    NgSwitch,
+    NgSwitchCase,
+    NgSwitchDefault,
+    BombTimerComponent,
+    ConfigurationComponent,
+    TimerExpiredComponent,
+  ],
 })
 export class AppComponent {
   // TODO: Add ngOnInit to retrieve from localStorage existing timers
   state: BombTimerState = BombTimerState.CONFIGURATION;
 
   currentConfiguration: BombTimerOptions = getDefaultOptions();
-  endDate: Date = new Date()
+  endDate: Date = new Date();
 
   onMoveToConfiguration(): void {
     this.currentConfiguration = getDefaultOptions();
@@ -26,7 +37,7 @@ export class AppComponent {
   }
 
   onCountdownCanceled(): void {
-    this.endDate = new Date()
+    this.endDate = new Date();
     this.state = BombTimerState.CONFIGURATION;
   }
 
@@ -36,7 +47,7 @@ export class AppComponent {
       new Date().getTime() +
         parseInt(this.currentConfiguration.hours) * MILLISECONDS_IN_HOUR +
         parseInt(this.currentConfiguration.minutes) * MILLISECONDS_IN_MINUTE
-    )
+    );
     this.state = BombTimerState.TIMER_RUNNING;
   }
 

@@ -2,8 +2,12 @@
   {{ timeLeftInMs$ | async }}
 </div>
 
-<div class="cancel-warning" *ngIf="showCancelWarning">Press ESC to cancel the countdown</div>
+<div class="cancel-warning" *ngIf="showCancelWarning">
+  Press ESC to cancel the countdown
+</div>
 
 <audio #audioPlayer controls loop [style.display]="'none'">
-  <source src="../../assets/audio/studio-kolomna-clock-ticking.mp3" type="audio/mpeg" />
+  <source
+    src="../../assets/audio/studio-kolomna-clock-ticking.mp3"
+    type="audio/mpeg" />
 </audio>
