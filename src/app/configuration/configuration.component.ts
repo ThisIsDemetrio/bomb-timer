@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BLUE, BombTimerOptions, Color, GREEN, RED } from '../types';
+import { BLUE, BombTimerOptions, GREEN, RED } from '../types';
 import { FormsModule } from '@angular/forms';
 import { getDefaultOptions } from '../utils';
 
@@ -15,10 +15,10 @@ const MAX_MINUTES_ALLOWED = 59;
   styleUrls: ['./configuration.component.scss'],
 })
 export class ConfigurationComponent {
-  @Input() configuration: BombTimerOptions = getDefaultOptions()
-  @Output() onConfigurationSend = new EventEmitter<BombTimerOptions>();
+  @Input() configuration: BombTimerOptions = getDefaultOptions();
+  @Output() configurationCompleted = new EventEmitter<BombTimerOptions>();
 
-  currentOptions: BombTimerOptions = getDefaultOptions()
+  currentOptions: BombTimerOptions = getDefaultOptions();
 
   availableColors = [
     { name: 'RED', value: RED },
@@ -35,7 +35,10 @@ export class ConfigurationComponent {
     const numberOfHours: number = this.safeParseToInt(value);
     if (Number.isNaN(numberOfHours)) return;
 
-    this.configuration.hours = Math.min(numberOfHours, MAX_HOURS_ALLOWED).toString();
+    this.configuration.hours = Math.min(
+      numberOfHours,
+      MAX_HOURS_ALLOWED
+    ).toString();
   }
 
   onSelectedHoursFocusOut(): void {
@@ -48,7 +51,10 @@ export class ConfigurationComponent {
     const numberOfMinutes: number = this.safeParseToInt(value);
     if (Number.isNaN(numberOfMinutes)) return;
 
-    this.configuration.minutes = Math.min(numberOfMinutes, MAX_MINUTES_ALLOWED).toString();
+    this.configuration.minutes = Math.min(
+      numberOfMinutes,
+      MAX_MINUTES_ALLOWED
+    ).toString();
   }
 
   onSelectedMinutesFocusOut(): void {
@@ -58,10 +64,14 @@ export class ConfigurationComponent {
   }
 
   isConfigurationValid(): boolean {
-    return !!this.configuration.color && (parseInt(this.configuration.hours) > 0 || parseInt(this.configuration.minutes) > 0);
+    return (
+      !!this.configuration.color &&
+      (parseInt(this.configuration.hours) > 0 ||
+        parseInt(this.configuration.minutes) > 0)
+    );
   }
 
   submitConfiguration(): void {
-    this.onConfigurationSend.emit({ ...this.configuration });
+    this.configurationCompleted.emit({ ...this.configuration });
   }
 }

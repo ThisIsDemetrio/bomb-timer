@@ -23,36 +23,44 @@ import { Subscription, interval } from 'rxjs';
   standalone: true,
   imports: [CommonModule],
 })
-export class TimerExpiredComponent implements OnDestroy, OnDestroy, AfterViewInit {
+export class TimerExpiredComponent
+  implements OnDestroy, OnDestroy, AfterViewInit
+{
   @Input() bombTimerConfiguration: BombTimerOptions | undefined;
   @HostBinding('style.background-color') backgroundColor: Color = BLACK;
   @HostBinding('style.color') color: Color = BLACK;
-  @Output() onStartNewTimer = new EventEmitter<void>();
+  @Output() moveToConfiguration = new EventEmitter<void>();
   @ViewChild('audioPlayer') audioPlayerRef!: ElementRef<HTMLAudioElement>;
 
   intervalSubscription: Subscription;
 
-  showRestartText: boolean = false;
+  showRestartText = false;
   showRestartTextTimeout: NodeJS.Timeout | null = null;
 
   @HostListener('document:keydown', ['$event'])
   onKeydownHandler(event: KeyboardEvent) {
     if (event.key === 'Escape' && this.showRestartText) {
-      this.onStartNewTimer.emit();
+      this.moveToConfiguration.emit();
       return;
     }
   }
 
   constructor() {
-    this.intervalSubscription = interval(MILLISECONDS_IN_SECOND).subscribe(() => {
-      if (!this.bombTimerConfiguration) return;
+    this.intervalSubscription = interval(MILLISECONDS_IN_SECOND).subscribe(
+      () => {
+        if (!this.bombTimerConfiguration) return;
 
-      // Switch colors
-      this.color = this.backgroundColor;
-      this.backgroundColor = this.color === BLACK ? this.bombTimerConfiguration.color : BLACK;
-    });
+        // Switch colors
+        this.color = this.backgroundColor;
+        this.backgroundColor =
+          this.color === BLACK ? this.bombTimerConfiguration.color : BLACK;
+      }
+    );
 
-    this.showRestartTextTimeout = setTimeout(() => (this.showRestartText = true), MILLISECONDS_IN_SECOND * 3);
+    this.showRestartTextTimeout = setTimeout(
+      () => (this.showRestartText = true),
+      MILLISECONDS_IN_SECOND * 3
+    );
   }
 
   ngAfterViewInit(): void {
