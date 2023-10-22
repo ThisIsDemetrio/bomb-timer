@@ -1,4 +1,4 @@
-import { BLACK, BombTimerOptions, RED } from './types';
+import { BombTimerOptions, RED } from './types';
 
 export const MILLISECONDS_IN_HOUR = 3600000;
 export const MILLISECONDS_IN_MINUTE = 60000;

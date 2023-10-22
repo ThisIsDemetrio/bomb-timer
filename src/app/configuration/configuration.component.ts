@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BLUE, BombTimerOptions, Color, GREEN, RED } from '../types';
+import { BLUE, BombTimerOptions, GREEN, RED } from '../types';
 import { FormsModule } from '@angular/forms';
 import { getDefaultOptions } from '../utils';
 
@@ -16,7 +16,7 @@ const MAX_MINUTES_ALLOWED = 59;
 })
 export class ConfigurationComponent {
   @Input() configuration: BombTimerOptions = getDefaultOptions();
-  @Output() onConfigurationSend = new EventEmitter<BombTimerOptions>();
+  @Output() configurationCompleted = new EventEmitter<BombTimerOptions>();
 
   currentOptions: BombTimerOptions = getDefaultOptions();
 
@@ -72,6 +72,6 @@ export class ConfigurationComponent {
   }
 
   submitConfiguration(): void {
-    this.onConfigurationSend.emit({ ...this.configuration });
+    this.configurationCompleted.emit({ ...this.configuration });
   }
 }

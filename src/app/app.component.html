@@ -2,7 +2,7 @@
   <ng-container *ngSwitchCase="'CONFIGURATION'">
     <configuration
       [configuration]="currentConfiguration"
-      (onConfigurationSend)="onConfigurationCompleted($event)" />
+      (configurationCompleted)="onConfigurationCompleted($event)" />
   </ng-container>
   <ng-container *ngSwitchCase="'TIMER_RUNNING'">
     <bomb-timer
@@ -15,6 +15,6 @@
   <ng-container *ngSwitchCase="'TIMER_EXPIRED'">
     <timer-expired
       [bombTimerConfiguration]="currentConfiguration"
-      (onStartNewTimer)="onMoveToConfiguration()" />
+      (moveToConfiguration)="onMoveToConfiguration()" />
   </ng-container>
 </ng-container>

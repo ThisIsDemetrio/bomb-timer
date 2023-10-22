@@ -29,7 +29,7 @@ export class TimerExpiredComponent
   @Input() bombTimerConfiguration: BombTimerOptions | undefined;
   @HostBinding('style.background-color') backgroundColor: Color = BLACK;
   @HostBinding('style.color') color: Color = BLACK;
-  @Output() onStartNewTimer = new EventEmitter<void>();
+  @Output() moveToConfiguration = new EventEmitter<void>();
   @ViewChild('audioPlayer') audioPlayerRef!: ElementRef<HTMLAudioElement>;
 
   intervalSubscription: Subscription;
@@ -40,7 +40,7 @@ export class TimerExpiredComponent
   @HostListener('document:keydown', ['$event'])
   onKeydownHandler(event: KeyboardEvent) {
     if (event.key === 'Escape' && this.showRestartText) {
-      this.onStartNewTimer.emit();
+      this.moveToConfiguration.emit();
       return;
     }
   }

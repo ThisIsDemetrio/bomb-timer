@@ -71,7 +71,10 @@ export class BombTimerComponent implements OnDestroy, OnInit, AfterViewInit {
             getFormattedTimeLeft(timeLeft, { showMilliseconds })
           );
         },
-        error: () => {},
+        error: (error: unknown) => {
+          console.error((error as Error).message);
+          this.countdownCanceled.emit();
+        },
         complete: () => {
           this.timeLeftInMs$.complete();
           this.countdownCompleted.emit();
