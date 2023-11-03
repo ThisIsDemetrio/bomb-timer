@@ -25,7 +25,6 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets/fonts",
               "src/assets/audio"
             ],
             "styles": ["src/styles.scss"],
