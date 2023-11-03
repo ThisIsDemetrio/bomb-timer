@@ -1,27 +1,25 @@
 # BombTimer
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f1924daa-a340-48c6-9808-3612fc9276d2/deploy-status)](https://app.netlify.com/sites/timer-bomb/deploys)
 
-## Development server
+Small single-page Application generated with [Angular CLI](https://github.com/angular/angular-cli) to simulate a bomb-timer countdown. Includes some small configurations to customize the countdown (such as time, showing milliseconds, which color use).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+This project is deployed with [Netlify](https://www.netlify.com) after every successful merge request.
 
-## Code scaffolding
+The code is completely open-source and written in [TypeScript](https://www.typescriptlang.org) and using the [Angular](https://angular.io) framework, using the latest available version. It uses [ESLint](https://eslint.org) and [Prettier](https://prettier.io) for code formatting.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+It is intended to be a showcase project to display personal skills in programming and web development with a simple project. You can use any part of the code, but mind that the following credits must be due:
 
-## Build
+- [Blambot Comic Fonts](https://www.1001fonts.com/users/blambot/) for the font
+- [Studio Kolomna](https://audiojungle.net/user/studiokolomna/portfolio) for the clock-ticking music
+- [Pixabay](https://pixabay.com/) for the bomb explosion music
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## How to run locally the BombTimer application
 
-## Running unit tests
+We use [npm](https://www.npmjs.com/) as a package manager. First of all, you have to run `npm ci` before attempting to build or start the application.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `npm run start` (`ng serve`) for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Running end-to-end tests
+Run `npm run build` (`ng build`) to build the project. The build artifacts will be stored in the `dist/` directory.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+There are no test suites for unit tests, integration tests or e2e tests. Yet.
