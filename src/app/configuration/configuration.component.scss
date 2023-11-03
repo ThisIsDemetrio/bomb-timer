@@ -4,12 +4,12 @@ $color: #ffbf00;
 :host {
   font-family: 'TickingTimebomb', sans-serif;
   height: 100%;
-  width: 100%;
+  padding: 0 1rem;
 
   display: flex;
   flex-direction: column;
   position: relative;
-  gap: 1rem 2rem;
+  gap: 1rem;
 
   font-size: 1.5rem;
   color: $color;
@@ -71,7 +71,7 @@ $color: #ffbf00;
         }
 
         // Checkbox btn container
-        input[type='checkbox'] + label {
+        input[type='checkbox']+label {
           display: flex;
           width: 1rem;
           height: 1rem;
@@ -81,7 +81,7 @@ $color: #ffbf00;
         }
 
         // Checkbox btn content when checked
-        input[type='checkbox']:checked + label::before {
+        input[type='checkbox']:checked+label::before {
           content: '';
           position: absolute;
           width: 0.75rem;
@@ -99,7 +99,6 @@ $color: #ffbf00;
   }
 
   .additional-options {
-    align-items: left;
     justify-content: center;
     display: flex;
     flex-direction: column;
@@ -121,7 +120,7 @@ $color: #ffbf00;
         }
 
         // Radio btn container
-        input[type='radio'] + label {
+        input[type='radio']+label {
           display: flex;
           width: 1rem;
           height: 1rem;
@@ -131,7 +130,7 @@ $color: #ffbf00;
         }
 
         // Radio btn content when selected
-        input[type='radio']:checked + label::before {
+        input[type='radio']:checked+label::before {
           content: '';
           position: absolute;
           width: 0.75rem;
@@ -179,7 +178,7 @@ $color: #ffbf00;
   .credits {
     position: absolute;
     bottom: 0.5rem;
-    right: 0.5rem;
+    right: 1.5rem;
     font-size: 1rem;
 
     a {
