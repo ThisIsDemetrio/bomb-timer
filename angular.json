@@ -61,10 +61,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "bombTimer:build:production"
+              "buildTarget": "bombTimer:build:production"
             },
             "development": {
-              "browserTarget": "bombTimer:build:development"
+              "buildTarget": "bombTimer:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -72,7 +72,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "bombTimer:build"
+            "buildTarget": "bombTimer:build"
           }
         },
         "test": {
