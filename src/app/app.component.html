@@ -1,20 +1,21 @@
-<ng-container [ngSwitch]="state">
-  <ng-container *ngSwitchCase="'CONFIGURATION'">
+
+@switch (state) {
+  @case ('CONFIGURATION') {
     <configuration
       [configuration]="currentConfiguration"
       (configurationCompleted)="onConfigurationCompleted($event)" />
-  </ng-container>
-  <ng-container *ngSwitchCase="'TIMER_RUNNING'">
+  }
+  @case ('TIMER_RUNNING') {
     <bomb-timer
       [bombTimerConfiguration]="currentConfiguration"
       [endDate]="endDate"
       (countdownCanceled)="onCountdownCanceled()"
       (countdownCompleted)="onCountdownCompleted()">
     </bomb-timer>
-  </ng-container>
-  <ng-container *ngSwitchCase="'TIMER_EXPIRED'">
+  }
+  @case ('TIMER_EXPIRED') {
     <timer-expired
       [bombTimerConfiguration]="currentConfiguration"
       (moveToConfiguration)="onMoveToConfiguration()" />
-  </ng-container>
-</ng-container>
+  }
+}
