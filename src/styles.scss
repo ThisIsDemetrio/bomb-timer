@@ -1,17 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 @font-face {
-  font-family: 'TickingTimebomb';
-  src: url('assets/fonts/TickingTimebomb.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'TickingTimebombItalic';
-  src: url('assets/fonts/TickingTimebombItalic.ttf') format('truetype');
-}
-
-body {
-  background-color: black;
-  font-family: 'TickingTimebombItalic', sans-serif;
-
-  margin: 0;
-}
+    font-family: 'TickingTimebomb';
+    src: url('assets/fonts/TickingTimebomb.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'TickingTimebombItalic';
+    src: url('assets/fonts/TickingTimebombItalic.ttf') format('truetype');
+  }
+  
+  body {
+    background-color: black;
+    font-family: 'TickingTimebombItalic', sans-serif;
+  
+    margin: 0;
+  }
+  
