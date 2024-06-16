@@ -5,7 +5,6 @@ $link: lightseagreen;
 $linkVisited: pink;
 $linkHovered: greenyellow;
 
-
 :host {
   font-family: 'TickingTimebomb', sans-serif;
   height: 100%;
@@ -24,18 +23,17 @@ $linkHovered: greenyellow;
     margin-bottom: 1rem;
 
     @media only screen and (max-width: 1023px) and (orientation: landscape),
-    only screen and (max-width: 767px) {
+      only screen and (max-width: 767px) {
       display: flex;
-      align-self: center
+      align-self: center;
     }
   }
 
   .description {
     font-size: 2rem;
 
-
     @media only screen and (max-width: 1023px) and (orientation: landscape),
-    only screen and (max-width: 767px) {
+      only screen and (max-width: 767px) {
       font-size: 1.5rem;
     }
   }
@@ -51,7 +49,6 @@ $linkHovered: greenyellow;
       display: flex;
       flex-direction: row;
       gap: 1rem;
-
 
       @media only screen and (max-width: 767px) {
         align-items: start;
@@ -94,7 +91,7 @@ $linkHovered: greenyellow;
         }
 
         // Checkbox btn container
-        input[type='checkbox']+label {
+        input[type='checkbox'] + label {
           display: flex;
           width: 1rem;
           height: 1rem;
@@ -104,7 +101,7 @@ $linkHovered: greenyellow;
         }
 
         // Checkbox btn content when checked
-        input[type='checkbox']:checked+label::before {
+        input[type='checkbox']:checked + label::before {
           content: '';
           position: absolute;
           width: 0.75rem;
@@ -143,7 +140,7 @@ $linkHovered: greenyellow;
         }
 
         // Radio btn container
-        input[type='radio']+label {
+        input[type='radio'] + label {
           display: flex;
           width: 1rem;
           height: 1rem;
@@ -153,7 +150,7 @@ $linkHovered: greenyellow;
         }
 
         // Radio btn content when selected
-        input[type='radio']:checked+label::before {
+        input[type='radio']:checked + label::before {
           content: '';
           position: absolute;
           width: 0.75rem;
@@ -205,8 +202,8 @@ $linkHovered: greenyellow;
     font-size: 1rem;
 
     @media only screen and (max-width: 1023px) and (orientation: landscape),
-    only screen and (max-width: 767px),
-    only screen and (max-height: 756px) {
+      only screen and (max-width: 767px),
+      only screen and (max-height: 756px) {
       position: relative;
       display: flex;
       flex-direction: column;
@@ -215,7 +212,7 @@ $linkHovered: greenyellow;
       right: 0;
 
       p {
-        margin: .25rem
+        margin: 0.25rem;
       }
     }
 

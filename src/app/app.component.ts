@@ -14,11 +14,7 @@ import { TimerExpiredComponent } from './timer-expired/timer-expired.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   standalone: true,
-  imports: [
-    BombTimerComponent,
-    ConfigurationComponent,
-    TimerExpiredComponent
-],
+  imports: [BombTimerComponent, ConfigurationComponent, TimerExpiredComponent],
 })
 export class AppComponent {
   // TODO: Add ngOnInit to retrieve from localStorage existing timers
