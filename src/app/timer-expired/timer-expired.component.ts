@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   AfterViewInit,
   Component,
@@ -21,7 +20,7 @@ import { Subscription, interval } from 'rxjs';
   templateUrl: './timer-expired.component.html',
   styleUrls: ['./timer-expired.component.scss'],
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
 })
 export class TimerExpiredComponent
   implements OnDestroy, OnDestroy, AfterViewInit

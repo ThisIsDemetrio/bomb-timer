@@ -2,9 +2,9 @@
   {{ timeLeftInMs$ | async }}
 </div>
 
-<div class="cancel-warning" *ngIf="showCancelWarning">
-  Press ESC to cancel the countdown
-</div>
+@if (showCancelWarning) {
+  <div class="cancel-warning">Press ESC to cancel the countdown</div>
+}
 
 <audio #audioPlayer controls loop [style.display]="'none'">
   <source

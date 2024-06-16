@@ -1,4 +1,3 @@
-import { NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
 import { Component } from '@angular/core';
 import { BombTimerOptions, BombTimerState } from './types';
 import { BombTimerComponent } from './bomb-timer/bomb-timer.component';
@@ -15,14 +14,7 @@ import { TimerExpiredComponent } from './timer-expired/timer-expired.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   standalone: true,
-  imports: [
-    NgSwitch,
-    NgSwitchCase,
-    NgSwitchDefault,
-    BombTimerComponent,
-    ConfigurationComponent,
-    TimerExpiredComponent,
-  ],
+  imports: [BombTimerComponent, ConfigurationComponent, TimerExpiredComponent],
 })
 export class AppComponent {
   // TODO: Add ngOnInit to retrieve from localStorage existing timers

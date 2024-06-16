@@ -54,18 +54,22 @@
 <div class="additional-options">
   <label for="color">Color:</label>
   <div class="additional-options-inline">
-    <div class="color-option" *ngFor="let color of availableColors">
-      <input
-        type="radio"
-        [id]="color.name"
-        name="color"
-        [value]="color.value"
-        [(ngModel)]="configuration.color"
-        checked />
-      <label [for]="color.name">
-        <span class="label" [style.color]="color.value">{{ color.name }}</span>
-      </label>
-    </div>
+    @for (color of availableColors; track color) {
+      <div class="color-option">
+        <input
+          type="radio"
+          [id]="color.name"
+          name="color"
+          [value]="color.value"
+          [(ngModel)]="configuration.color"
+          checked />
+        <label [for]="color.name">
+          <span class="label" [style.color]="color.value">{{
+            color.name
+          }}</span>
+        </label>
+      </div>
+    }
   </div>
   <div class="submit-area">
     <button
