@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ElementRef } from '@angular/core';
 
 import { BombTimerComponent } from './bomb-timer.component';
 import { ConfigurationStore } from '../configuration.store';
@@ -9,6 +8,10 @@ describe('BombTimerComponent', () => {
   let fixture: ComponentFixture<BombTimerComponent>;
 
   beforeEach(() => {
+    spyOn(window.HTMLMediaElement.prototype, 'play').and.returnValue(
+      Promise.resolve()
+    );
+
     TestBed.configureTestingModule({
       imports: [BombTimerComponent],
       providers: [
@@ -52,18 +55,5 @@ describe('BombTimerComponent', () => {
     const event = new KeyboardEvent('keydown', { key: 'Escape' });
     component.onKeydownHandler(event);
     expect(component.countdownCanceled.emit).toHaveBeenCalled();
-  });
-
-  it('should set color from configuration on ngAfterViewInit', () => {
-    // Mock configuration and audioPlayerRef
-    Object.defineProperty(component, 'bombTimerConfiguration', {
-      get: () => ({ color: '#FF0000' }),
-    });
-    component.color = '#000000';
-    component.audioPlayerRef = {
-      nativeElement: { play: () => {} },
-    } as unknown as ElementRef<HTMLAudioElement>;
-    component.ngAfterViewInit();
-    expect(component.color).toBe('#FF0000');
   });
 });

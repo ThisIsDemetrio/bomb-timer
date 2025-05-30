@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ConfigurationComponent } from './configuration.component';
+import { ConfigurationStore } from '../configuration.store';
 
 describe('ConfigurationComponent', () => {
   let component: ConfigurationComponent;
@@ -9,6 +10,21 @@ describe('ConfigurationComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [ConfigurationComponent],
+      providers: [
+        {
+          provide: ConfigurationStore,
+          useValue: {
+            configuration: () => ({
+              hours: '00',
+              minutes: '01',
+              color: '#FF0000',
+              showMilliseconds: false,
+            }),
+            setConfiguration: jasmine.createSpy('setConfiguration'),
+            reset: jasmine.createSpy('reset'),
+          },
+        },
+      ],
     });
     fixture = TestBed.createComponent(ConfigurationComponent);
     component = fixture.componentInstance;

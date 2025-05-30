@@ -22,10 +22,10 @@ import { MILLISECONDS_IN_SECOND, getFormattedTimeLeft } from '../utils';
 import { ConfigurationStore } from '../configuration.store';
 
 @Component({
-    selector: 'bomb-timer',
-    templateUrl: './bomb-timer.component.html',
-    styleUrls: ['./bomb-timer.component.scss'],
-    imports: [CommonModule]
+  selector: 'bomb-timer',
+  templateUrl: './bomb-timer.component.html',
+  styleUrls: ['./bomb-timer.component.scss'],
+  imports: [CommonModule],
 })
 export class BombTimerComponent implements OnDestroy, OnInit, AfterViewInit {
   @Input() endDate: Date = new Date();
@@ -65,6 +65,7 @@ export class BombTimerComponent implements OnDestroy, OnInit, AfterViewInit {
     const config = this.bombTimerConfiguration;
     if (!config) throw new Error('BombTimerOptions not set in store');
     const { showMilliseconds } = config;
+    this.color = config.color;
 
     this.countdownInterval$ = interval(61)
       .pipe(takeWhile(() => this.endDate.getTime() > new Date().getTime()))
@@ -89,7 +90,6 @@ export class BombTimerComponent implements OnDestroy, OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     const config = this.bombTimerConfiguration;
     if (!config) throw new Error('BombTimerOptions not set in store');
-    this.color = config.color;
     this.audioPlayerRef.nativeElement.play();
   }
 

@@ -1,15 +1,34 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ElementRef } from '@angular/core';
 
 import { TimerExpiredComponent } from './timer-expired.component';
+import { ConfigurationStore } from '../configuration.store';
 
 describe('TimerExpiredComponent', () => {
   let component: TimerExpiredComponent;
   let fixture: ComponentFixture<TimerExpiredComponent>;
 
   beforeEach(() => {
+    spyOn(window.HTMLMediaElement.prototype, 'play').and.returnValue(
+      Promise.resolve()
+    );
+
     TestBed.configureTestingModule({
       imports: [TimerExpiredComponent],
+      providers: [
+        {
+          provide: ConfigurationStore,
+          useValue: {
+            configuration: () => ({
+              hours: '00',
+              minutes: '01',
+              color: '#FF0000',
+              showMilliseconds: false,
+            }),
+            setConfiguration: jasmine.createSpy('setConfiguration'),
+            reset: jasmine.createSpy('reset'),
+          },
+        },
+      ],
     });
     fixture = TestBed.createComponent(TimerExpiredComponent);
     component = fixture.componentInstance;
@@ -29,13 +48,12 @@ describe('TimerExpiredComponent', () => {
   });
 
   it('should switch colors every second', () => {
-    // Use Object.defineProperty to mock bombTimerConfiguration
     Object.defineProperty(component, 'bombTimerConfiguration', {
       get: () => ({ color: '#FF0000' }),
     });
     component.color = '#000000';
     component.backgroundColor = '#000000';
-    // Simulate interval callback
+
     component.color = component.backgroundColor;
     component.backgroundColor =
       component.color === '#000000' ? '#FF0000' : '#000000';
@@ -43,9 +61,6 @@ describe('TimerExpiredComponent', () => {
   });
 
   it('should play audio on ngAfterViewInit', () => {
-    component.audioPlayerRef = {
-      nativeElement: { play: jasmine.createSpy('play') },
-    } as unknown as ElementRef<HTMLAudioElement>;
     component.ngAfterViewInit();
     expect(component.audioPlayerRef.nativeElement.play).toHaveBeenCalled();
   });
