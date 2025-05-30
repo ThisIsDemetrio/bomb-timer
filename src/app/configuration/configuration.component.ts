@@ -8,10 +8,10 @@ const MAX_HOURS_ALLOWED = 99;
 const MAX_MINUTES_ALLOWED = 59;
 
 @Component({
-    selector: 'configuration',
-    imports: [FormsModule],
-    templateUrl: './configuration.component.html',
-    styleUrls: ['./configuration.component.scss']
+  selector: 'configuration',
+  imports: [FormsModule],
+  templateUrl: './configuration.component.html',
+  styleUrls: ['./configuration.component.scss'],
 })
 export class ConfigurationComponent {
   @Input() configuration: BombTimerOptions = getDefaultOptions();

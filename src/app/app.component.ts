@@ -7,10 +7,10 @@ import { TimerExpiredComponent } from './timer-expired/timer-expired.component';
 import { ConfigurationStore } from './configuration.store';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
-    imports: [BombTimerComponent, ConfigurationComponent, TimerExpiredComponent]
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  imports: [BombTimerComponent, ConfigurationComponent, TimerExpiredComponent],
 })
 export class AppComponent {
   // TODO: Add ngOnInit to retrieve from localStorage existing timers
