@@ -5,15 +5,16 @@ import {
   EventEmitter,
   HostBinding,
   HostListener,
-  Input,
   OnDestroy,
   Output,
   ViewChild,
+  inject,
 } from '@angular/core';
-
-import { BLACK, BombTimerOptions, Color } from '../types';
-import { MILLISECONDS_IN_SECOND } from '../utils';
 import { Subscription, interval } from 'rxjs';
+
+import { BLACK, Color } from '../types';
+import { MILLISECONDS_IN_SECOND } from '../utils';
+import { ConfigurationStore } from '../configuration.store';
 
 @Component({
   selector: 'timer-expired',
@@ -25,7 +26,6 @@ import { Subscription, interval } from 'rxjs';
 export class TimerExpiredComponent
   implements OnDestroy, OnDestroy, AfterViewInit
 {
-  @Input() bombTimerConfiguration: BombTimerOptions | undefined;
   @HostBinding('style.background-color') backgroundColor: Color = BLACK;
   @HostBinding('style.color') color: Color = BLACK;
   @Output() moveToConfiguration = new EventEmitter<void>();
@@ -35,6 +35,9 @@ export class TimerExpiredComponent
 
   showRestartText = false;
   showRestartTextTimeout: NodeJS.Timeout | null = null;
+
+  private readonly configurationStore = inject(ConfigurationStore);
+  bombTimerConfiguration = this.configurationStore.configuration();
 
   @HostListener('document:keydown', ['$event'])
   onKeydownHandler(event: KeyboardEvent) {

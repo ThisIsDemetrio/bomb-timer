@@ -11,13 +11,15 @@ import {
   OnInit,
   Output,
   ViewChild,
+  inject,
 } from '@angular/core';
 
 import { BehaviorSubject, Subscription, interval } from 'rxjs';
 import { takeWhile } from 'rxjs/operators';
 
-import { BLACK, BombTimerOptions, Color } from '../types';
+import { BLACK, Color } from '../types';
 import { MILLISECONDS_IN_SECOND, getFormattedTimeLeft } from '../utils';
+import { ConfigurationStore } from '../configuration.store';
 
 @Component({
   selector: 'bomb-timer',
@@ -28,11 +30,15 @@ import { MILLISECONDS_IN_SECOND, getFormattedTimeLeft } from '../utils';
 })
 export class BombTimerComponent implements OnDestroy, OnInit, AfterViewInit {
   @Input() endDate: Date = new Date();
-  @Input() bombTimerConfiguration: BombTimerOptions | undefined;
   @HostBinding('style.color') color: Color = BLACK;
   @Output() countdownCanceled = new EventEmitter<void>();
   @Output() countdownCompleted = new EventEmitter<void>();
   @ViewChild('audioPlayer') audioPlayerRef!: ElementRef<HTMLAudioElement>;
+
+  private readonly configurationStore = inject(ConfigurationStore);
+  get bombTimerConfiguration() {
+    return this.configurationStore.configuration();
+  }
 
   showCancelWarning = false;
 
@@ -57,10 +63,9 @@ export class BombTimerComponent implements OnDestroy, OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    if (!this.bombTimerConfiguration)
-      throw new Error('BombTimerOptions not passed correctly');
-
-    const { showMilliseconds } = this.bombTimerConfiguration;
+    const config = this.bombTimerConfiguration;
+    if (!config) throw new Error('BombTimerOptions not set in store');
+    const { showMilliseconds } = config;
 
     this.countdownInterval$ = interval(61)
       .pipe(takeWhile(() => this.endDate.getTime() > new Date().getTime()))
@@ -83,11 +88,9 @@ export class BombTimerComponent implements OnDestroy, OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    if (!this.bombTimerConfiguration)
-      throw new Error('BombTimerOptions not passed correctly');
-
-    this.color = this.bombTimerConfiguration.color;
-
+    const config = this.bombTimerConfiguration;
+    if (!config) throw new Error('BombTimerOptions not set in store');
+    this.color = config.color;
     this.audioPlayerRef.nativeElement.play();
   }
 
