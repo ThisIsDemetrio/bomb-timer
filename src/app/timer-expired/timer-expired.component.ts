@@ -17,11 +17,10 @@ import { MILLISECONDS_IN_SECOND } from '../utils';
 import { ConfigurationStore } from '../configuration.store';
 
 @Component({
-  selector: 'timer-expired',
-  templateUrl: './timer-expired.component.html',
-  styleUrls: ['./timer-expired.component.scss'],
-  standalone: true,
-  imports: [],
+    selector: 'timer-expired',
+    templateUrl: './timer-expired.component.html',
+    styleUrls: ['./timer-expired.component.scss'],
+    imports: []
 })
 export class TimerExpiredComponent
   implements OnDestroy, OnDestroy, AfterViewInit
