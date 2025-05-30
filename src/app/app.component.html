@@ -1,20 +1,16 @@
 @switch (state) {
   @case ('CONFIGURATION') {
     <configuration
-      [configuration]="currentConfiguration"
       (configurationCompleted)="onConfigurationCompleted($event)" />
   }
   @case ('TIMER_RUNNING') {
     <bomb-timer
-      [bombTimerConfiguration]="currentConfiguration"
       [endDate]="endDate"
       (countdownCanceled)="onCountdownCanceled()"
       (countdownCompleted)="onCountdownCompleted()">
     </bomb-timer>
   }
   @case ('TIMER_EXPIRED') {
-    <timer-expired
-      [bombTimerConfiguration]="currentConfiguration"
-      (moveToConfiguration)="onMoveToConfiguration()" />
+    <timer-expired (moveToConfiguration)="onMoveToConfiguration()" />
   }
 }

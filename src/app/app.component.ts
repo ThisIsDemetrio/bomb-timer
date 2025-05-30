@@ -1,13 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { BombTimerOptions, BombTimerState } from './types';
 import { BombTimerComponent } from './bomb-timer/bomb-timer.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
-import {
-  MILLISECONDS_IN_HOUR,
-  MILLISECONDS_IN_MINUTE,
-  getDefaultOptions,
-} from './utils';
+import { MILLISECONDS_IN_HOUR, MILLISECONDS_IN_MINUTE } from './utils';
 import { TimerExpiredComponent } from './timer-expired/timer-expired.component';
+import { ConfigurationStore } from './configuration.store';
 
 @Component({
   selector: 'app-root',
@@ -20,11 +17,11 @@ export class AppComponent {
   // TODO: Add ngOnInit to retrieve from localStorage existing timers
   state: BombTimerState = BombTimerState.CONFIGURATION;
 
-  currentConfiguration: BombTimerOptions = getDefaultOptions();
+  private readonly configurationStore = inject(ConfigurationStore);
   endDate: Date = new Date();
 
   onMoveToConfiguration(): void {
-    this.currentConfiguration = getDefaultOptions();
+    this.configurationStore.reset();
     this.state = BombTimerState.CONFIGURATION;
   }
 
@@ -34,12 +31,13 @@ export class AppComponent {
   }
 
   onConfigurationCompleted(options: BombTimerOptions): void {
-    this.currentConfiguration = options;
     this.endDate = new Date(
       new Date().getTime() +
-        parseInt(this.currentConfiguration.hours) * MILLISECONDS_IN_HOUR +
-        parseInt(this.currentConfiguration.minutes) * MILLISECONDS_IN_MINUTE
+        parseInt(options.hours) * MILLISECONDS_IN_HOUR +
+        parseInt(options.minutes) * MILLISECONDS_IN_MINUTE
     );
+
+    this.configurationStore.setConfiguration(options);
     this.state = BombTimerState.TIMER_RUNNING;
   }
 

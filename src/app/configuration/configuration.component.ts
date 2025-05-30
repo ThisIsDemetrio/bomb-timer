@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { BLUE, BombTimerOptions, GREEN, RED } from '../types';
 import { FormsModule } from '@angular/forms';
 import { getDefaultOptions } from '../utils';
+import { ConfigurationStore } from '../configuration.store';
 
 const MAX_HOURS_ALLOWED = 99;
 const MAX_MINUTES_ALLOWED = 59;
@@ -24,6 +25,8 @@ export class ConfigurationComponent {
     { name: 'GREEN', value: GREEN },
     { name: 'BLUE', value: BLUE },
   ];
+
+  private readonly configurationStore = inject(ConfigurationStore);
 
   private safeParseToInt(value: string): number {
     value = value.replace(/[^0-9]/g, '');
@@ -71,6 +74,7 @@ export class ConfigurationComponent {
   }
 
   submitConfiguration(): void {
+    this.configurationStore.setConfiguration({ ...this.configuration });
     this.configurationCompleted.emit({ ...this.configuration });
   }
 }
