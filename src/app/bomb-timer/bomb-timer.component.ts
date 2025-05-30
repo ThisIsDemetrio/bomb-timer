@@ -22,11 +22,10 @@ import { MILLISECONDS_IN_SECOND, getFormattedTimeLeft } from '../utils';
 import { ConfigurationStore } from '../configuration.store';
 
 @Component({
-  selector: 'bomb-timer',
-  templateUrl: './bomb-timer.component.html',
-  styleUrls: ['./bomb-timer.component.scss'],
-  standalone: true,
-  imports: [CommonModule],
+    selector: 'bomb-timer',
+    templateUrl: './bomb-timer.component.html',
+    styleUrls: ['./bomb-timer.component.scss'],
+    imports: [CommonModule]
 })
 export class BombTimerComponent implements OnDestroy, OnInit, AfterViewInit {
   @Input() endDate: Date = new Date();
